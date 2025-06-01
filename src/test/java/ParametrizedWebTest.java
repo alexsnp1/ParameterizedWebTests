@@ -16,6 +16,7 @@ public class ParametrizedWebTest {
         Configuration.browserSize = "1600x900";
         Configuration.pageLoadStrategy = "eager";
     }
+
     @ValueSource(strings = {
             "Enterprise", "Advanced Security"
     })
@@ -39,13 +40,14 @@ public class ParametrizedWebTest {
         $$("ul a").findBy(text(value)).click();
         $$("div a").findBy(text(expectedResult)).shouldBe(visible);
     }
+
     static Stream<Arguments> selenideSiteShouldOpenCorrectPage () {
         return Stream.of(
                 Arguments.of("Solutions", "Enterprises", "Enterprise"),
                 Arguments.of("Product", "Actions", "Features")
         );
-
     }
+
     @MethodSource
     @ParameterizedTest(name = "Должен открыть {1} и убедиться что есть {2}")
     void selenideSiteShouldOpenCorrectPage(String headerMenu, String companySize, String expectedResult) {
