@@ -11,11 +11,10 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 public class ParametrizedWebTest {
 
-    @BeforeEach
-    void setUp() {
+    @BeforeAll
+    static void setUp() {
         Configuration.browserSize = "1600x900";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.holdBrowserOpen = true;
     }
     @ValueSource(strings = {
             "Enterprise", "Advanced Security"
